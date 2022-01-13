@@ -1,0 +1,21 @@
+<?php
+$fp = fopen( "status.html", "w" );
+if( flock($fp,LOCK_EX) ) {
+	if( $_REQUEST['status'] != '' ) {
+                $content = sha1($_REQUEST['status']);
+                if( $content == 'f96d42d598335150b2f44703445acf139adec5de' ) {
+		    $text = "<!--387d7a59dbaaef002e0f9ac69ecd4443b9c5cef2-->";
+                }
+                else if ( $content == '5242c3833b0090cb58faebb55493bd5cfa56f52f' ) {
+                    $text = "<!--ad50489054ddaae044be8b3054bf4d67480648d6-->";
+                }
+                else {
+                    $text = '';
+                }
+	}
+	fwrite( $fp, $text );
+	flock( $fp, LOCK_UN );
+} else {
+}
+fclose( $fp );
+?>

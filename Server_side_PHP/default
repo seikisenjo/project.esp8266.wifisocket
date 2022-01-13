@@ -1,0 +1,64 @@
+<?php  
+require('password.php');
+$status = $_GET['status'];
+if($status == "on") {  
+  $file = fopen("status.html", "w") or die("Unable to open file!");
+  fwrite($file, '<!--387d7a59dbaaef002e0f9ac69ecd4443b9c5cef2-->');
+  fclose($file);
+} 
+else if ($status == "off") {  
+  $file = fopen("status.html", "w") or die("Unable to open file!");
+  fwrite($file, '<!--ad50489054ddaae044be8b3054bf4d67480648d6-->');
+  fclose($file);
+}
+?>
+
+<html>  
+  <head>      
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ESP8266 status</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <style type="text/css">
+      body {
+        background: url("unnamed.png") no-repeat center;
+        background-color: #fbfbfb;
+      }
+    </style>
+    <div class="row" style="margin-top: 40px;">
+      <div class="col-md-8 col-md-offset-2">
+        <a href="?status=on" class="btn btn-success btn-block btn-lg">Turn On</a>
+        <br />
+        <a href="?status=off" class="btn btn-danger btn-block btn-lg">Turn Off</a>
+        <br />
+        <div class="status well" style="margin-top: 5px; text-align:center">
+          <?php
+            if($status=="on") {
+              echo("POWER turned ON");
+            }
+            else if ($status=="off") {
+              echo("POWER turned OFF");
+            }
+            else {
+              $handle = fopen("status.html", "rb");
+              $contents = stream_get_contents($handle);
+              if (preg_match('/387d7a59dbaaef002e0f9ac69ecd4443b9c5cef2/',$contents)) {             
+                echo("POWER turned ON");
+              }
+              else if (preg_match('/ad50489054ddaae044be8b3054bf4d67480648d6/',$contents)) {
+                echo("POWER turned OFF");
+              }
+              fclose($handle);
+            }
+          ?>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>  
