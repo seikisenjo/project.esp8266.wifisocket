@@ -14,9 +14,9 @@
 # System Overview
 
   User device (Android or any device with Web browsing ability)
-                          ↓
+                          →
                     PHP Web server
-                          ↓
+                          →
                  Updated status in HTML
-                          ↓
+                          →
   ESP8266 periodic polling on status of HTML and switch ON/OFF based on variables received
