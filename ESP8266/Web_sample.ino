@@ -1,7 +1,7 @@
 #include <ESP8266WiFi.h>
  
-const char* host = "http://seikisenjo.netne.net";
-const char* url = "http://seikisenjo.netne.net/status.html";
+const char* host = "https://php.seikisenjo.me";
+const char* url = "https://php.seikisenjo.me/status.html";
 String status;
 
 void setup() {
