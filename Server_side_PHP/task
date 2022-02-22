@@ -8,15 +8,15 @@ if( $_REQUEST['timer'] != '' ) {
         $starttime = substr_replace($trimstart, ":", 2, 0);
         $endtime = substr_replace($trimend, ":", 2, 0);
         $string = $starttime."$".$endtime;
-        $fp1 = fopen( "/home/a3218126/public_html/task.html", "w" );
+        $fp1 = fopen( "task.html", "w" );
         fwrite( $fp1, "<!--".$string."-->" );
 	fclose($fp1);
-        $fp2 = fopen( "/home/a3218126/public_html/timer.html", "w" );
+        $fp2 = fopen( "timer.html", "w" );
         fwrite( $fp2, "<!--aa:aa-->" );
 	fclose($fp2);
 }
 $current = date("H:i");
-$handle = fopen("/home/a3218126/public_html/task.html", "rb");
+$handle = fopen("task.html", "rb");
 $read = stream_get_contents($handle);
 fclose($handle);
 $start = substr($read, 4, 5);
@@ -24,15 +24,15 @@ $end = substr($read, 10, 5);
 $flag1 = strcmp ($start, $current);
 $flag2 = strcmp ($end, $current);
 if ($flag1 <= 0) {             
-        $status1 = fopen("/home/a3218126/public_html/status.html", "w") or die("Unable to open file!");
+        $status1 = fopen("status.html", "w") or die("Unable to open file!");
         fwrite($status1, '<!--387d7a59dbaaef002e0f9ac69ecd4443b9c5cef2-->');
         fclose($status1);
 }
 if ($flag2 <= 0) {  
-        $status2 = fopen("/home/a3218126/public_html/status.html", "w") or die("Unable to open file!");
+        $status2 = fopen("status.html", "w") or die("Unable to open file!");
         fwrite($status2, '<!--ad50489054ddaae044be8b3054bf4d67480648d6-->');
         fclose($status2);
-        $write = fopen("/home/a3218126/public_html/task.html", "w") or die("Unable to open file!");
+        $write = fopen("task.html", "w") or die("Unable to open file!");
         fwrite($write, '<!--aa:aa$bb:bb-->');
         fclose($write);
 }
