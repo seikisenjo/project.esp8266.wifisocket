@@ -1,7 +1,7 @@
 local http = require("socket.http")
 local widget = require( "widget" )
-local statusNow = "http://seikisenjo.netne.net/status.html"
-local web = "http://seikisenjo.netne.net"
+local statusNow = "https://php.seikisenjo.me/status.html"
+local web = "https://php.seikisenjo.me"
 local myTitle = display.newText("ESP8266 status", display.contentCenterX, 0, native.systemFont, 20)
 myTitle:setFillColor(0, 255, 50)
 local myText = display.newText("Checking for internet connection...",display.contentCenterX, 45, native.systemFont, 14)
@@ -29,7 +29,7 @@ local function getStatus1 ()
 local path = system.pathForFile( "status.txt", system.CachesDirectory)
 local myFile = io.open( path, "w" ) 
 http.request{ 
-        url = "http://seikisenjo.netne.net/status.html",  sink = ltn12.sink.file(myFile),
+        url = "https://php.seikisenjo.me/status.html",  sink = ltn12.sink.file(myFile),
 }
 local file = io.open( path, "r" )
 if file then
@@ -51,7 +51,7 @@ end
 getStatus1 ()
 local function handleButton1Event( event )
     if ( "ended" == event.phase ) then
-	local remote_host = "http://seikisenjo.netne.net/main.php"
+	local remote_host = "https://php.seikisenjo.me/main.php"
 	local auxdata = {}
 	auxdata.headers = {}
 	auxdata.headers["Authorization"] = "Basic "
@@ -62,7 +62,7 @@ local function handleButton1Event( event )
 end
 local function handleButton2Event( event )
     if ( "ended" == event.phase ) then
-	local remote_host = "http://seikisenjo.netne.net/main.php"
+	local remote_host = "https://php.seikisenjo.me/main.php"
 	local auxdata = {}
 	auxdata.headers = {}
 	auxdata.headers["Authorization"] = "Basic "
@@ -162,7 +162,7 @@ local function handleButton3Event( event )
                  timehour = numericField1.text
                  timeminute = numericField2.text
     elseif ( "ended" == event.phase ) then
-	local remote_host = "http://seikisenjo.netne.net/timer.php"
+	local remote_host = "https://php.seikisenjo.me/timer.php"
 	local auxdata = {}
 	auxdata.headers = {}
 	auxdata.headers["Authorization"] = "Basic "
@@ -189,7 +189,7 @@ local function getStatus2 ()
 local path1 = system.pathForFile( "timer.txt", system.CachesDirectory)
 local myFile1 = io.open( path1, "w" ) 
 http.request{ 
-        url = "http://seikisenjo.netne.net/timer.html",  sink = ltn12.sink.file(myFile1),
+        url = "https://php.seikisenjo.me/timer.html",  sink = ltn12.sink.file(myFile1),
 }
 local file1 = io.open( path1, "r" )
 if file1 then
@@ -385,7 +385,7 @@ local function handleButton4Event( event )
 	pickerWheel2.isVisible=false
     	numericField1.isVisible=true
        	numericField2.isVisible=true
-	local remote_host = "http://seikisenjo.netne.net/task.php"
+	local remote_host = "https://php.seikisenjo.me/task.php"
 	local auxdata = {}
 	auxdata.headers = {}
 	auxdata.headers["Authorization"] = "Basic "
@@ -419,7 +419,7 @@ local function getStatus3 ()
 local path2 = system.pathForFile( "task.txt", system.CachesDirectory)
 local myFile2 = io.open( path2, "w" ) 
 http.request{ 
-        url = "http://seikisenjo.netne.net/task.html",  sink = ltn12.sink.file(myFile2),
+        url = "https://php.seikisenjo.me/task.html",  sink = ltn12.sink.file(myFile2),
 }
 local file2 = io.open( path2, "r" )
 if file2 then
