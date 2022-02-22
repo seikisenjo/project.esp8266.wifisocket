@@ -5,27 +5,27 @@ if( $_REQUEST['timer'] != '' ) {
         $trimhour = substr($extract, 0, 2);
         $trimminute = substr($extract, 2, 2);
         $time = date("H:i", time()+($trimhour*60*60)+($trimminute*60));
-        $file = fopen("/home/a3218126/public_html/status.html", "w") or die("Unable to open file!");
+        $file = fopen("status.html", "w") or die("Unable to open file!");
         fwrite($file, '<!--387d7a59dbaaef002e0f9ac69ecd4443b9c5cef2-->');
         fclose($file);
-        $fp1 = fopen( "/home/a3218126/public_html/timer.html", "w" );
+        $fp1 = fopen( "timer.html", "w" );
         fwrite( $fp1, "<!--".$time."-->" );
 	fclose($fp1);
-        $fp2 = fopen( "/home/a3218126/public_html/task.html", "w" );
+        $fp2 = fopen( "task.html", "w" );
         fwrite( $fp2, "<!--aa:aa$bb:bb-->" );
 	fclose($fp2);
 }
 $current = date("H:i");
-$handle = fopen("/home/a3218126/public_html/timer.html", "rb");
+$handle = fopen("timer.html", "rb");
 $read = stream_get_contents($handle);
 fclose($handle);
 $check = substr($read, 4, 5);
 $flag = strcmp ($check, $current);
 if ($flag <= 0) {             
-        $status = fopen("/home/a3218126/public_html/status.html", "w") or die("Unable to open file!");
+        $status = fopen("status.html", "w") or die("Unable to open file!");
         fwrite($status, '<!--ad50489054ddaae044be8b3054bf4d67480648d6-->');
         fclose($status);
-        $write = fopen("/home/a3218126/public_html/timer.html", "w") or die("Unable to open file!");
+        $write = fopen("timer.html", "w") or die("Unable to open file!");
         fwrite($write, '<!--aa:aa-->');
         fclose($write);
 }
